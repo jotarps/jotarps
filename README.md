@@ -1,11 +1,11 @@
 # JOTARPS — Cybersecurity Toolkit
 
 ```
-     ##   #####  ######  #   #  ####   ####    ####
-      #  #    #    #     #   #  #   #  #   #  #
-      #  #    #    #     #####  ####   ####    ###
-  #   #  #    #    #     #   #  #   #  #          #
-   ###    ####     #     #   #  #   #  #      ####
+       ____     ____     _______      /\       _____     _____      _____  
+       |  |    /    \   |__   __|    /  \     |  __ \   |  __ \    / ____| 
+       |  |   |      |     | |      / /\ \    | |__) |  | |__) |  | (___   
+   /|  |  |    \    /      | |     /_/  \_\   |  _  /   |  ___/    \___ \  
+   \|__|__|     \__/       |_|                |_| \_\   |_|        ____) | 
 ```
 
 <p align="center">
@@ -68,60 +68,35 @@ Ideal para:
 
 ## Menu de Ferramentas
 
-Ao rodar o JOTARPS voce vera um menu assim:
-
 ```
   [ REDE & SCAN ]
-   [ 1] Port Scanner TCP
-   [ 2] Ping Sweep / Host Discovery
-   [ 3] Traceroute
-   [ 4] DNS Lookup & Reverso
-   [ 5] WHOIS Manual (via socket)
-   [ 6] Banner Grabber
-   [ 7] HTTP Header Inspector
-   [ 8] Subnet Calculator
+  [1] Port Scanner TCP    [2] Ping Sweep         [3] Traceroute
+  [4] DNS Lookup          [5] WHOIS Manual        [6] Banner Grabber
+  [7] HTTP Headers        [8] Subnet Calc
 
   [ ANALISE DE WEB ]
-   [ 9] Subdominio Finder (wordlist)
-   [10] Directory Brute Force
-   [11] URL Fuzzer
-   [12] Tech Fingerprinter
-   [13] Extrator de Links
+  [9] Subdomain Finder    [10] Dir Brute Force    [11] URL Fuzzer
+  [12] Tech Fingerprint   [13] Link Extractor
 
-  [ CRIPTOGRAFIA & HASH ]
-   [14] Gerador de Hash (MD5/SHA)
-   [15] Hash Cracker (wordlist)
-   [16] Encoder/Decoder Base64
-   [17] ROT13 Cipher
-   [18] XOR Cipher
-   [19] Caesar Cipher
+  [ CRIPTO & HASH ]
+  [14] Hash Generator     [15] Hash Cracker       [16] Base64
+  [17] ROT13              [18] XOR Cipher         [19] Caesar Cipher
 
-  [ SENHAS & WORDLISTS ]
-   [20] Gerador de Senhas Fortes
-   [21] Gerador de Wordlist
-   [22] Verificador de Forca de Senha
-   [23] Mutacao Leet Speak
+  [ SENHAS & WORDLIST ]
+  [20] Password Gen       [21] Wordlist Gen       [22] Pass Strength
+  [23] Leet Speak
 
   [ FORENSE & INFO ]
-   [24] Info do Sistema Local
-   [25] Capturador de IP Publico
-   [26] MAC Address Lookup
-   [27] Analisador de Arquivo (hex/strings)
-   [28] Log de Conexoes Ativas
+  [24] System Info        [25] Public IP          [26] MAC Lookup
+  [27] File Analyzer      [28] Active Conns
 
   [ MISC & TOOLS ]
-   [29] Gerador de Payload Base64
-   [30] IP Geolocation
-   [31] Ping Flood Tester (CTF/lab)
-   [32] Reverse Shell Generator
-   [33] Encoder/Decoder de URL
-   [34] Decoder JWT
-   [35] SAIR
+  [29] Payload B64        [30] IP Geolocation     [31] Ping Flood
+  [32] Rev Shell Gen      [33] URL Encoder        [34] JWT Decoder
+  [35] EXIT
 
   jotarps@menu >
 ```
-
-Digite o numero da ferramenta e pressione ENTER.
 
 ---
 
@@ -142,7 +117,7 @@ Descobre hosts ativos em uma rede inteira usando CIDR.
 - Multithread para varredura rapida
 
 #### [3] Traceroute
-Rastreia o caminho dos pacotes ate o destino, mostrando cada salto (hop) na rota.
+Rastreia o caminho dos pacotes ate o destino, mostrando cada salto na rota.
 - Usa o traceroute nativo do sistema
 - Compativel com Linux, macOS e Windows
 
@@ -174,7 +149,7 @@ Calcula todos os dados de uma sub-rede a partir de uma notacao CIDR.
 
 ### Analise de Web
 
-#### [9] Subdominio Finder
+#### [9] Subdomain Finder
 Descobre subdominios de um dominio usando uma wordlist. Usa threads para maior velocidade.
 - Wordlist padrao embutida com 25 subdominios comuns
 - Suporta wordlists externas
@@ -195,9 +170,8 @@ Substitui a palavra FUZZ em uma URL por valores de uma wordlist ou range numeric
 #### [12] Tech Fingerprinter
 Identifica as tecnologias usadas em um site analisando o HTML e cabecalhos HTTP.
 - Detecta: WordPress, Joomla, Drupal, Laravel, Django, React, Vue, Angular, jQuery, Bootstrap, PHP, ASP.NET, Nginx, Apache, Cloudflare e mais
-- Analisa corpo da pagina + headers simultaneamente
 
-#### [13] Extrator de Links
+#### [13] Link Extractor
 Extrai todos os links (href e src) de uma pagina web.
 - Remove duplicatas automaticamente
 - Util para mapeamento de superficie de ataque
@@ -206,7 +180,7 @@ Extrai todos os links (href e src) de uma pagina web.
 
 ### Criptografia & Hash
 
-#### [14] Gerador de Hash
+#### [14] Hash Generator
 Gera hashes de textos ou arquivos em multiplos algoritmos simultaneamente.
 - Algoritmos: MD5, SHA1, SHA224, SHA256, SHA384, SHA512, SHA3-256, BLAKE2b
 - Suporta texto direto ou caminho de arquivo
@@ -218,114 +192,84 @@ Tenta quebrar um hash comparando com uma wordlist.
 
 #### [16] Base64 Encoder/Decoder
 Codifica e decodifica strings em Base64.
-- Modo encode e decode
-- Saida limpa sem espacos extras
 
 #### [17] ROT13
-Aplica a cifra ROT13 em um texto. Como ROT13 e simetrica, a mesma operacao serve para encode e decode.
+Aplica a cifra ROT13 em um texto. Como e simetrica, serve para encode e decode.
 
 #### [18] XOR Cipher
 Aplica XOR entre um texto e uma chave string.
 - Saida em hexadecimal e Base64
-- Chave ciclica (repete automaticamente)
+- Chave ciclica
 
 #### [19] Caesar Cipher
-Cifra de Cesar com suporte a encode, decode e brute force.
-- Modo encode: cifra com shift escolhido
-- Modo decode: decifra com shift escolhido
-- Modo brute force: testa todos os 25 shifts possiveis
+Cifra de Cesar com suporte a encode, decode e brute force completo (25 shifts).
 
 ---
 
 ### Senhas & Wordlists
 
-#### [20] Gerador de Senhas Fortes
-Gera senhas criptograficamente seguras usando `random.SystemRandom`.
+#### [20] Password Generator
+Gera senhas criptograficamente seguras usando SystemRandom.
 - Configuravel: tamanho, quantidade, incluir simbolos
-- Usa SystemRandom (criptograficamente seguro)
 
-#### [21] Gerador de Wordlist
-Cria wordlists personalizadas baseadas em uma palavra-base com mutacoes automaticas.
-- Adiciona anos, numeros, simbolos
-- Aplica variacoes de capitalizacao
-- Gera versoes leet speak automaticamente
+#### [21] Wordlist Generator
+Cria wordlists personalizadas com mutacoes automaticas.
+- Adiciona anos, numeros, simbolos, leet speak
 - Salva em arquivo .txt
 
-#### [22] Verificador de Forca de Senha
+#### [22] Password Strength
 Analisa uma senha em 9 criterios e da uma pontuacao de forca.
-- Criterios: comprimento, maiusculas, minusculas, numeros, simbolos, diversidade, repeticoes
 - Niveis: MUITO FRACA / FRACA / MEDIA / FORTE
-- Entrada oculta (nao aparece na tela)
+- Entrada oculta
 
-#### [23] Mutacao Leet Speak
-Aplica diferentes estilos de substituicao leet speak em uma palavra.
-- 3 estilos diferentes de leet
-- Util para gerar variantes de senhas em wordlists
+#### [23] Leet Speak Mutator
+Aplica 3 estilos diferentes de substituicao leet speak em uma palavra.
 
 ---
 
 ### Forense & Info
 
-#### [24] Info do Sistema Local
-Exibe informacoes completas do sistema onde o JOTARPS esta rodando.
-- Hostname, IP local, OS, CPU, versao Python, usuario, data/hora, diretorio atual
-- Lista interfaces de rede com IPs
+#### [24] System Info
+Exibe informacoes completas do sistema: hostname, IP, OS, CPU, usuario, interfaces de rede.
 
-#### [25] Capturador de IP Publico
+#### [25] Public IP
 Descobre o IP publico da maquina consultando servicos externos.
-- Tenta multiplos servicos em sequencia
-- Mostra qual servico respondeu
 
-#### [26] MAC Address Lookup
-Identifica o fabricante de um dispositivo a partir do seu endereco MAC.
-- Extrai o OUI (primeiros 3 octetos)
-- Consulta a API macvendors.com
+#### [26] MAC Lookup
+Identifica o fabricante de um dispositivo a partir do MAC address via API.
 
-#### [27] Analisador de Arquivo
-Analisa qualquer arquivo mostrando informacoes forenses.
-- Tamanho, magic bytes, MD5, SHA256
-- Hex dump dos primeiros 256 bytes
-- Extrai strings legiveis (minimo 6 chars)
+#### [27] File Analyzer
+Analisa qualquer arquivo: tamanho, magic bytes, MD5, SHA256, hex dump e strings.
 
-#### [28] Log de Conexoes Ativas
-Mostra todas as conexoes de rede ativas no sistema.
-- Usa netstat nativo
-- Destaca conexoes ESTABLISHED e portas em LISTEN
+#### [28] Active Connections
+Mostra todas as conexoes de rede ativas usando netstat.
 
 ---
 
 ### Misc & Tools
 
-#### [29] Gerador de Payload Base64
-Gera payloads encodados em Base64 prontos para uso em CTF e pentest autorizado.
+#### [29] Payload Base64
+Gera payloads encodados prontos para CTF e pentest autorizado.
 - Suporte a Bash, Python3 e PHP
-- Mostra o payload completo para execucao
 
 #### [30] IP Geolocation
-Geolocalizacao de qualquer IP usando a API ip-api.com.
-- Mostra: pais, estado, cidade, ISP, organizacao, timezone, latitude/longitude
-- Funciona com IPv4 publico
+Geolocalizacao de qualquer IP: pais, cidade, ISP, timezone, coordenadas.
 
 #### [31] Ping Flood Tester
-Envia pings rapidos para testar estabilidade de rede em ambiente controlado.
-- Requer confirmacao explicita de uso responsavel
-- Apenas para redes proprias ou com autorizacao
+Envia pings rapidos para teste de estabilidade em ambiente controlado.
+- Requer confirmacao de uso responsavel
 
 #### [32] Reverse Shell Generator
-Gera reverse shells prontos para copiar e usar em CTF e pentest autorizado.
-- Tipos: Bash, Python3, Netcat, Netcat mkfifo, Perl, PHP, PowerShell
-- Mostra tambem o comando de listener (nc -lvnp)
+Gera reverse shells prontos para CTF e pentest autorizado.
+- Tipos: Bash, Python3, Netcat, Perl, PHP, PowerShell
 
-#### [33] Encoder/Decoder de URL
+#### [33] URL Encoder/Decoder
 Codifica e decodifica strings para uso em URLs.
-- Modo encode: URL encode e URL encode completo
-- Modo decode: decodifica %XX de volta para texto
 
-#### [34] Decoder JWT
-Decodifica tokens JWT mostrando header e payload sem verificar assinatura.
-- Decodifica Base64url automaticamente
-- Converte timestamps (exp, iat, nbf) para data legivel
-- Avisa que a assinatura nao e verificada
+#### [34] JWT Decoder
+Decodifica tokens JWT mostrando header e payload.
+- Converte timestamps para data legivel
+- Avisa que assinatura nao e verificada
 
 ---
 
@@ -333,11 +277,9 @@ Decodifica tokens JWT mostrando header e payload sem verificar assinatura.
 
 ```
 jotarps/
-  jotarps.py    -- arquivo principal (tudo em um unico arquivo)
+  jotarps.py    -- tudo em um unico arquivo
   README.md     -- documentacao
 ```
-
-Tudo em um unico arquivo Python para facilitar distribuicao e uso rapido.
 
 ---
 
@@ -350,7 +292,6 @@ Tudo em um unico arquivo Python para facilitar distribuicao e uso rapido.
 | macOS | OK |
 | Windows | OK |
 | Python 3.6+ | OK |
-| Python 2.x | NAO suportado |
 
 ---
 
@@ -360,7 +301,7 @@ Esta ferramenta foi desenvolvida exclusivamente para fins educacionais, pratica 
 
 **O uso desta ferramenta em sistemas sem autorizacao e crime.**
 
-O autor nao se responsabiliza por qualquer uso indevido. Use com responsabilidade.
+O autor nao se responsabiliza por qualquer uso indevido.
 
 ---
 
@@ -374,21 +315,16 @@ Pull requests sao bem-vindos!
 4. Push: `git push origin minha-feature`
 5. Abra um Pull Request
 
-Ideias de novas ferramentas? Abre uma Issue!
-
 ---
 
 ## Roadmap
 
 - [ ] Scanner UDP
 - [ ] SMTP Enumerator
-- [ ] Brute force SSH (com autorizacao)
-- [ ] Decodificador de QR Code
 - [ ] Analisador de pcap
-- [ ] Gerador de certificado SSL autoassinado
 - [ ] Escaner de vulnerabilidades web basico
-- [ ] Interface colorida melhorada
 - [ ] Exportar resultados para arquivo
+- [ ] Modo verboso/silencioso
 
 ---
 
@@ -396,32 +332,10 @@ Ideias de novas ferramentas? Abre uma Issue!
 
 Feito por **jpp** — [@jotarps](https://github.com/jotarps)
 
-Se o projeto te ajudou, deixa uma estrela! Ajuda o projeto a crescer.
+Se o projeto te ajudou, deixa uma estrela!
 
 ---
 
 ## Licenca
 
-```
-MIT License
-
-Copyright (c) 2026 jotarps
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+MIT License — Copyright (c) 2026 jotarps
