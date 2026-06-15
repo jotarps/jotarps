@@ -53,84 +53,151 @@ def cprint(text, color=C.WHITE, end="\n"):
 
 def banner():
     clr()
-    logo = r"""
-     _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _
-    | |/ // // // // // // // // // // // // // // // / |
-    |  / // // // // // // // // // // // // // // //  |
-    | / // // // // // // // // // // // // // // // / |
-    |/_//_//_//_//_//_//_//_//_//_//_//_//_//_//_//_/ |
+    logo = [
+        r" ___  ___  _____  ___  ____  ____  ___  ",
+        r"/  / /  / /  __/ /  / /   / /  _/ /  _\ ",
+        r"/  /_/  / /  __/ /  /_/  /  /  /  /  __/",
+        r"\____\_/  \____/ \____\_/   \__/  \___/  ",
+    ]
+    # J
+    J = [
+        r"   ____  ",
+        r"  /    \ ",
+        r" /  __  |",
+        r"|  /  | |",
+        r" \_\__/_/",
+    ]
+    # O
+    O = [
+        r"  ____  ",
+        r" /    \ ",
+        r"|  ()  |",
+        r" \    / ",
+        r"  \__/  ",
+    ]
+    # T
+    T = [
+        r" _______ ",
+        r"|__   __|",
+        r"   | |   ",
+        r"   | |   ",
+        r"   |_|   ",
+    ]
+    # A
+    A = [
+        r"   /\   ",
+        r"  /  \  ",
+        r" / /\ \ ",
+        "/_/  \\_\\",
+        r"        ",
+    ]
+    # R
+    R = [
+        r" ____  ",
+        r"|  _ \ ",
+        r"| |_) |",
+        r"|  _ < ",
+        "|_| \\_\\",
+    ]
+    # P
+    P = [
+        r" ____  ",
+        r"|  _ \ ",
+        r"| |_) |",
+        r"|  __/ ",
+        r"|_|    ",
+    ]
+    # S
+    S = [
+        r" _____ ",
+        r"/ ____|",
+        r"\___ \ ",
+        r" ___) |",
+        r"|____/ ",
+    ]
 
-     ##   #####  ######  #   #  ####   ####    ####
-      #  #    #    #     #   #  #   #  #   #  #
-      #  #    #    #     #####  ####   ####    ###
-  #   #  #    #    #     #   #  #   #  #          #
-   ###    ####     #     #   #  #   #  #      ####
-    """
-    print(f"{C.PURPLE}{C.BOLD}{logo}{C.RESET}")
-    print(f"{C.CYAN}{'-'*55}{C.RESET}")
-    print(f"{C.PURPLE}  [*]  Cybersecurity Toolkit  |  by jpp  |  v1.0.0{C.RESET}")
-    print(f"{C.CYAN}{'-'*55}{C.RESET}\n")
+    letters = [J, O, T, A, R, P, S]
+    for row in range(5):
+        line = "  "
+        for letter in letters:
+            line += letter[row] + " "
+        print(f"{C.PURPLE}{C.BOLD}{line}{C.RESET}")
+
+    print()
+    print(f"{C.PURPLE}{'='*58}{C.RESET}")
+    print(f"{C.PURPLE}  [*] Cybersecurity Toolkit   |   by jpp   |   v1.0.0{C.RESET}")
+    print(f"{C.PURPLE}{'='*58}{C.RESET}\n")
 
 def menu():
     banner()
-    cats = {
-        "[ REDE & SCAN ]": [
-            (" 1", "Port Scanner TCP"),
-            (" 2", "Ping Sweep / Host Discovery"),
-            (" 3", "Traceroute"),
-            (" 4", "DNS Lookup & Reverso"),
-            (" 5", "WHOIS Manual (via socket)"),
-            (" 6", "Banner Grabber"),
-            (" 7", "HTTP Header Inspector"),
-            (" 8", "Subnet Calculator"),
-        ],
-        "[ ANALISE DE WEB ]": [
-            (" 9", "Subdomínio Finder (wordlist)"),
-            ("10", "Directory Brute Force"),
-            ("11", "URL Fuzzer"),
-            ("12", "Tech Fingerprinter"),
-            ("13", "Extrator de Links"),
-        ],
-        "[ CRIPTOGRAFIA & HASH ]": [
-            ("14", "Gerador de Hash (MD5/SHA)"),
-            ("15", "Hash Cracker (wordlist)"),
-            ("16", "Encoder/Decoder Base64"),
-            ("17", "ROT13 Cipher"),
-            ("18", "XOR Cipher"),
-            ("19", "Caesar Cipher"),
-        ],
-        "[ SENHAS & WORDLISTS ]": [
-            ("20", "Gerador de Senhas Fortes"),
-            ("21", "Gerador de Wordlist"),
-            ("22", "Verificador de Força de Senha"),
-            ("23", "Mutação de Senha (leet speak)"),
-        ],
-        "[ FORENSE & INFO ]": [
-            ("24", "Info do Sistema Local"),
-            ("25", "Capturador de IP Público"),
-            ("26", "MAC Address Lookup"),
-            ("27", "Analisador de Arquivo (hex/strings)"),
-            ("28", "Log de Conexões Ativas"),
-        ],
-        "[ MISC & TOOLS ]": [
-            ("29", "Gerador de Payload Base64"),
-            ("30", "IP Geolocation (via API)"),
-            ("31", "Ping Flood Tester (local/ctf)"),
-            ("32", "Reverse Shell Generator"),
-            ("33", "Encoder de URL"),
-            ("34", "Decoder JWT"),
-            ("35", "SAIR"),
-        ],
-    }
 
-    for cat, items in cats.items():
-        print(f"  {C.PURPLE}{C.BOLD}{cat}{C.RESET}")
-        for num, name in items:
-            print(f"   {C.CYAN}[{C.YELLOW}{num}{C.CYAN}]{C.RESET} {name}")
+    # Grade horizontal: 3 colunas
+    items = [
+        (" 1", "Port Scanner TCP"),
+        (" 2", "Ping Sweep"),
+        (" 3", "Traceroute"),
+        (" 4", "DNS Lookup"),
+        (" 5", "WHOIS Manual"),
+        (" 6", "Banner Grabber"),
+        (" 7", "HTTP Headers"),
+        (" 8", "Subnet Calc"),
+        (" 9", "Subdomain Finder"),
+        ("10", "Dir Brute Force"),
+        ("11", "URL Fuzzer"),
+        ("12", "Tech Fingerprint"),
+        ("13", "Link Extractor"),
+        ("14", "Hash Generator"),
+        ("15", "Hash Cracker"),
+        ("16", "Base64"),
+        ("17", "ROT13"),
+        ("18", "XOR Cipher"),
+        ("19", "Caesar Cipher"),
+        ("20", "Password Gen"),
+        ("21", "Wordlist Gen"),
+        ("22", "Pass Strength"),
+        ("23", "Leet Speak"),
+        ("24", "System Info"),
+        ("25", "Public IP"),
+        ("26", "MAC Lookup"),
+        ("27", "File Analyzer"),
+        ("28", "Active Conns"),
+        ("29", "Payload B64"),
+        ("30", "IP Geolocation"),
+        ("31", "Ping Flood"),
+        ("32", "Rev Shell Gen"),
+        ("33", "URL Encoder"),
+        ("34", "JWT Decoder"),
+        ("35", "EXIT"),
+    ]
+
+    cols = 3
+    col_w = 22
+
+    sections = [
+        ("REDE & SCAN",        range(0,  8)),
+        ("ANALISE DE WEB",     range(8,  13)),
+        ("CRIPTO & HASH",      range(13, 19)),
+        ("SENHAS & WORDLIST",  range(19, 23)),
+        ("FORENSE & INFO",     range(23, 28)),
+        ("MISC & TOOLS",       range(28, 35)),
+    ]
+
+    for sec_name, sec_range in sections:
+        print(f"  {C.PURPLE}{C.BOLD}[ {sec_name} ]{C.RESET}")
+        sec_items = [items[i] for i in sec_range]
+        for i in range(0, len(sec_items), cols):
+            row_items = sec_items[i:i+cols]
+            line = "  "
+            for num, name in row_items:
+                cell = f"{C.PURPLE}[{C.WHITE}{num}{C.PURPLE}]{C.RESET} {C.WHITE}{name}{C.RESET}"
+                # pad para alinhar (conta so chars visiveis)
+                pad = col_w - len(name) - 4
+                line += cell + " " * max(pad, 1)
+            print(line)
         print()
 
-    print(f"{C.CYAN}{'-'*55}{C.RESET}")
-    choice = input(f"  {C.PURPLE}jotarps{C.RESET}{C.GRAY}@{C.RESET}{C.CYAN}menu{C.RESET} {C.WHITE}> {C.RESET}").strip()
+    print(f"{C.PURPLE}{'='*58}{C.RESET}")
+    choice = input(f"  {C.PURPLE}jotarps{C.RESET}{C.GRAY}@{C.RESET}{C.PURPLE}menu{C.RESET} {C.WHITE}> {C.RESET}").strip()
     return choice
 
 def pause():
