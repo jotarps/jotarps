@@ -62,19 +62,65 @@ LOGO_FALLBACK = """
 
 def banner():
     clr()
-    logo = [
-        r" __  ___  ___  ___  ____  ____  ____  ___ ",
-        r" \ \/ _ \|_ _|/ _ \|  _ \|  _ \/ ___|| __|",
-        r"  | | | || | | |_| | |_) | |_) \___ \| |_ ",
-        r"  | | |_| || | |  _/|  _ <|  __/ ___) |  _|",
-        r" /_/ \___/|___|_|   |_| \_\_|   |____/|_|  ",
+    J = [
+        r"      ____  ",
+        r"      |  |  ",
+        r"      |  |  ",
+        r"  /|  |  |  ",
+        r"  \|__|__|  ",
     ]
-    for line in logo:
+    O = [
+        r"   ____   ",
+        r"  /    \  ",
+        r" |      | ",
+        r"  \    /  ",
+        r"   \__/   ",
+    ]
+    T = [
+        r"  _______  ",
+        r" |__   __| ",
+        r"    | |    ",
+        r"    | |    ",
+        r"    |_|    ",
+    ]
+    A = [
+        r"    /\     ",
+        r"   /  \    ",
+        r"  / /\ \   ",
+        r" /_/  \_\  ",
+        r"           ",
+    ]
+    R = [
+        r"  _____   ",
+        r" |  __ \  ",
+        r" | |__) | ",
+        r" |  _  /  ",
+        r" |_| \_\  ",
+    ]
+    P = [
+        r"  _____   ",
+        r" |  __ \  ",
+        r" | |__) | ",
+        r" |  ___/  ",
+        r" |_|      ",
+    ]
+    S = [
+        r"   _____  ",
+        r"  / ____| ",
+        r" | (___   ",
+        r"  \___ \  ",
+        r"  ____) | ",
+    ]
+    letters = [J, O, T, A, R, P, S]
+    for row in range(5):
+        line = "  "
+        for letter in letters:
+            line += letter[row]
         print(f"{C.PURPLE}{C.BOLD}{line}{C.RESET}")
     print()
-    print(f"{C.PURPLE}{'='*58}{C.RESET}")
+    print(f"{C.PURPLE}{"="*65}{C.RESET}")
     print(f"{C.PURPLE}  [*] Cybersecurity Toolkit   |   by jpp   |   v1.0.0{C.RESET}")
-    print(f"{C.PURPLE}{'='*58}{C.RESET}\n")
+    print(f"{C.PURPLE}{"="*65}{C.RESET}\n")
 
 def menu():
     banner()
