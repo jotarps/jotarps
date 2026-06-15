@@ -1,16 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-     ██╗ ██████╗ ████████╗ █████╗ ██████╗ ██████╗ ███████╗
-     ██║██╔═══██╗╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝
-     ██║██║   ██║   ██║   ███████║██████╔╝██████╔╝███████╗
-██   ██║██║   ██║   ██║   ██╔══██║██╔══██╗██╔═══╝ ╚════██║
-╚█████╔╝╚██████╔╝   ██║   ██║  ██║██║  ██║██║     ███████║
- ╚════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
-
-     [ Cybersecurity Toolkit by jpp ] - v1.0.0
-"""
+""" JOTARPS - Cybersecurity Toolkit by jpp v1.0.0 """
 
 import os
 import sys
@@ -36,9 +27,9 @@ import getpass
 import shutil
 from datetime import datetime
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # COLORS
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 class C:
     RESET   = "\033[0m"
     BOLD    = "\033[1m"
@@ -63,19 +54,22 @@ def cprint(text, color=C.WHITE, end="\n"):
 def banner():
     clr()
     logo = r"""
-  ▄▄▄██████▄▄▄
-▄█████████████████▄
-█████╗ █████╗ ████████╗ █████╗ ██████╗ ██████╗ ███████╗
-     ██║██╔═══██╗╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝
-     ██║██║   ██║   ██║   ███████║██████╔╝██████╔╝███████╗
-██   ██║██║   ██║   ██║   ██╔══██║██╔══██╗██╔═══╝ ╚════██║
-╚█████╔╝╚██████╔╝   ██║   ██║  ██║██║  ██║██║     ███████║
- ╚════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
+     _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _
+    | |/ // // // // // // // // // // // // // // // / |
+    |  / // // // // // // // // // // // // // // //  |
+    | / // // // // // // // // // // // // // // // / |
+    |/_//_//_//_//_//_//_//_//_//_//_//_//_//_//_//_/ |
+
+     ##   #####  ######  #   #  ####   ####    ####
+      #  #    #    #     #   #  #   #  #   #  #
+      #  #    #    #     #####  ####   ####    ###
+  #   #  #    #    #     #   #  #   #  #          #
+   ###    ####     #     #   #  #   #  #      ####
     """
     print(f"{C.PURPLE}{C.BOLD}{logo}{C.RESET}")
-    print(f"{C.CYAN}{'═'*65}{C.RESET}")
-    print(f"{C.PURPLE}  ★  Cybersecurity Toolkit  |  by jpp  |  v1.0.0{C.RESET}")
-    print(f"{C.CYAN}{'═'*65}{C.RESET}\n")
+    print(f"{C.CYAN}{'-'*55}{C.RESET}")
+    print(f"{C.PURPLE}  [*]  Cybersecurity Toolkit  |  by jpp  |  v1.0.0{C.RESET}")
+    print(f"{C.CYAN}{'-'*55}{C.RESET}\n")
 
 def menu():
     banner()
@@ -135,22 +129,22 @@ def menu():
             print(f"   {C.CYAN}[{C.YELLOW}{num}{C.CYAN}]{C.RESET} {name}")
         print()
 
-    print(f"{C.CYAN}{'─'*65}{C.RESET}")
-    choice = input(f"  {C.PURPLE}jotarps{C.RESET}{C.GRAY}@{C.RESET}{C.CYAN}menu{C.RESET} {C.WHITE}» {C.RESET}").strip()
+    print(f"{C.CYAN}{'-'*55}{C.RESET}")
+    choice = input(f"  {C.PURPLE}jotarps{C.RESET}{C.GRAY}@{C.RESET}{C.CYAN}menu{C.RESET} {C.WHITE}> {C.RESET}").strip()
     return choice
 
 def pause():
     input(f"\n  {C.GRAY}[ pressione ENTER para voltar ]{C.RESET}")
 
 def sep():
-    print(f"\n{C.PURPLE}{'─'*65}{C.RESET}\n")
+    print(f"\n{C.PURPLE}{'-'*55}{C.RESET}\n")
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 1 - PORT SCANNER TCP
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def port_scanner():
     banner()
-    cprint("  ══ PORT SCANNER TCP ══\n", C.PURPLE + C.BOLD)
+    cprint("  == PORT SCANNER TCP ==\n", C.PURPLE + C.BOLD)
     host = input(f"  {C.CYAN}Host/IP{C.RESET}: ").strip()
     port_range = input(f"  {C.CYAN}Range de portas (ex: 1-1024){C.RESET}: ").strip()
     try:
@@ -198,15 +192,15 @@ def port_scanner():
 
     elapsed = round(time.time() - start_time, 2)
     sep()
-    cprint(f"  [✓] {len(open_ports)} porta(s) abertas | Tempo: {elapsed}s", C.CYAN)
+    cprint(f"  [OK] {len(open_ports)} porta(s) abertas | Tempo: {elapsed}s", C.CYAN)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 2 - PING SWEEP
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def ping_sweep():
     banner()
-    cprint("  ══ PING SWEEP / HOST DISCOVERY ══\n", C.PURPLE + C.BOLD)
+    cprint("  == PING SWEEP / HOST DISCOVERY ==\n", C.PURPLE + C.BOLD)
     net = input(f"  {C.CYAN}Rede CIDR (ex: 192.168.1.0/24){C.RESET}: ").strip()
     try:
         network = ipaddress.ip_network(net, strict=False)
@@ -238,15 +232,15 @@ def ping_sweep():
     for th in threads: th.join()
 
     sep()
-    cprint(f"  [✓] {len(alive)} host(s) online.", C.CYAN)
+    cprint(f"  [OK] {len(alive)} host(s) online.", C.CYAN)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 3 - TRACEROUTE
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def traceroute():
     banner()
-    cprint("  ══ TRACEROUTE ══\n", C.PURPLE + C.BOLD)
+    cprint("  == TRACEROUTE ==\n", C.PURPLE + C.BOLD)
     host = input(f"  {C.CYAN}Host/IP{C.RESET}: ").strip()
     cmd = ["tracert", host] if platform.system().lower() == "windows" else ["traceroute", "-m", "30", host]
     sep()
@@ -260,12 +254,12 @@ def traceroute():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 4 - DNS LOOKUP
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def dns_lookup():
     banner()
-    cprint("  ══ DNS LOOKUP & REVERSO ══\n", C.PURPLE + C.BOLD)
+    cprint("  == DNS LOOKUP & REVERSO ==\n", C.PURPLE + C.BOLD)
     target = input(f"  {C.CYAN}Domínio ou IP{C.RESET}: ").strip()
     sep()
     try:
@@ -287,12 +281,12 @@ def dns_lookup():
         cprint(f"  {C.YELLOW}Reverso:{C.RESET}    não encontrado")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 5 - WHOIS MANUAL
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def whois_lookup():
     banner()
-    cprint("  ══ WHOIS MANUAL ══\n", C.PURPLE + C.BOLD)
+    cprint("  == WHOIS MANUAL ==\n", C.PURPLE + C.BOLD)
     domain = input(f"  {C.CYAN}Domínio (ex: google.com){C.RESET}: ").strip()
     sep()
     try:
@@ -327,12 +321,12 @@ def whois_lookup():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 6 - BANNER GRABBER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def banner_grabber():
     banner()
-    cprint("  ══ BANNER GRABBER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == BANNER GRABBER ==\n", C.PURPLE + C.BOLD)
     host = input(f"  {C.CYAN}Host/IP{C.RESET}: ").strip()
     ports_raw = input(f"  {C.CYAN}Portas (ex: 21,22,80,443){C.RESET}: ").strip()
     ports = [int(p.strip()) for p in ports_raw.split(",") if p.strip().isdigit()]
@@ -350,12 +344,12 @@ def banner_grabber():
             cprint(f"  {C.RED}[{port}]{C.RESET} {e}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 7 - HTTP HEADER INSPECTOR
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def http_headers():
     banner()
-    cprint("  ══ HTTP HEADER INSPECTOR ══\n", C.PURPLE + C.BOLD)
+    cprint("  == HTTP HEADER INSPECTOR ==\n", C.PURPLE + C.BOLD)
     url = input(f"  {C.CYAN}URL (ex: https://example.com){C.RESET}: ").strip()
     sep()
     try:
@@ -372,12 +366,12 @@ def http_headers():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 8 - SUBNET CALCULATOR
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def subnet_calc():
     banner()
-    cprint("  ══ SUBNET CALCULATOR ══\n", C.PURPLE + C.BOLD)
+    cprint("  == SUBNET CALCULATOR ==\n", C.PURPLE + C.BOLD)
     cidr = input(f"  {C.CYAN}CIDR (ex: 192.168.1.0/24){C.RESET}: ").strip()
     try:
         net = ipaddress.ip_network(cidr, strict=False)
@@ -394,12 +388,12 @@ def subnet_calc():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 9 - SUBDOMAIN FINDER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def subdomain_finder():
     banner()
-    cprint("  ══ SUBDOMÍNIO FINDER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == SUBDOMÍNIO FINDER ==\n", C.PURPLE + C.BOLD)
     domain = input(f"  {C.CYAN}Domínio alvo (ex: example.com){C.RESET}: ").strip()
     wordlist_input = input(f"  {C.CYAN}Wordlist (ENTER para padrão){C.RESET}: ").strip()
     default_words = ["www","mail","ftp","admin","api","dev","test","staging","blog",
@@ -418,7 +412,7 @@ def subdomain_finder():
         try:
             ip = socket.gethostbyname(full)
             found.append((full, ip))
-            cprint(f"  {C.GREEN}[✓]{C.RESET}  {full:<40} {C.YELLOW}{ip}{C.RESET}")
+            cprint(f"  {C.GREEN}[OK]{C.RESET}  {full:<40} {C.YELLOW}{ip}{C.RESET}")
         except:
             pass
     threads = []
@@ -427,15 +421,15 @@ def subdomain_finder():
         threads.append(t); t.start()
     for t in threads: t.join()
     sep()
-    cprint(f"  [✓] {len(found)} subdomínio(s) encontrado(s).", C.CYAN)
+    cprint(f"  [OK] {len(found)} subdomínio(s) encontrado(s).", C.CYAN)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 10 - DIRECTORY BRUTE FORCE
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def dir_bruteforce():
     banner()
-    cprint("  ══ DIRECTORY BRUTE FORCE ══\n", C.PURPLE + C.BOLD)
+    cprint("  == DIRECTORY BRUTE FORCE ==\n", C.PURPLE + C.BOLD)
     url = input(f"  {C.CYAN}URL base (ex: http://site.com){C.RESET}: ").strip().rstrip("/")
     wordlist_input = input(f"  {C.CYAN}Wordlist (ENTER para padrão){C.RESET}: ").strip()
     default = ["admin","login","dashboard","panel","wp-admin","phpmyadmin","api",
@@ -475,15 +469,15 @@ def dir_bruteforce():
             threads = []
     for th in threads: th.join()
     sep()
-    cprint(f"  [✓] Scan completo.", C.CYAN)
+    cprint(f"  [OK] Scan completo.", C.CYAN)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 11 - URL FUZZER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def url_fuzzer():
     banner()
-    cprint("  ══ URL FUZZER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == URL FUZZER ==\n", C.PURPLE + C.BOLD)
     url = input(f"  {C.CYAN}URL com FUZZ (ex: http://site.com/page?id=FUZZ){C.RESET}: ").strip()
     fuzz_type = input(f"  {C.CYAN}Tipo [1=números 2=wordlist]{C.RESET}: ").strip()
     sep()
@@ -517,15 +511,15 @@ def url_fuzzer():
         except:
             pass
     sep()
-    cprint(f"  [✓] Fuzzing finalizado.", C.CYAN)
+    cprint(f"  [OK] Fuzzing finalizado.", C.CYAN)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 12 - TECH FINGERPRINTER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def tech_fingerprint():
     banner()
-    cprint("  ══ TECH FINGERPRINTER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == TECH FINGERPRINTER ==\n", C.PURPLE + C.BOLD)
     url = input(f"  {C.CYAN}URL{C.RESET}: ").strip()
     sep()
     ctx = ssl.create_default_context()
@@ -558,7 +552,7 @@ def tech_fingerprint():
             for tech, patterns in sigs.items():
                 for p in patterns:
                     if p.lower() in combined:
-                        cprint(f"  {C.GREEN}[✓]{C.RESET}  {C.YELLOW}{tech}{C.RESET} detectado")
+                        cprint(f"  {C.GREEN}[OK]{C.RESET}  {C.YELLOW}{tech}{C.RESET} detectado")
                         found_any = True
                         break
             if not found_any:
@@ -567,12 +561,12 @@ def tech_fingerprint():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 13 - EXTRATOR DE LINKS
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def link_extractor():
     banner()
-    cprint("  ══ EXTRATOR DE LINKS ══\n", C.PURPLE + C.BOLD)
+    cprint("  == EXTRATOR DE LINKS ==\n", C.PURPLE + C.BOLD)
     url = input(f"  {C.CYAN}URL{C.RESET}: ").strip()
     sep()
     ctx = ssl.create_default_context()
@@ -585,19 +579,19 @@ def link_extractor():
         links += re.findall(r'src=["\']([^"\']+)["\']', body)
         links = sorted(set(links))
         for l in links:
-            cprint(f"  {C.CYAN}→{C.RESET}  {l}")
+            cprint(f"  {C.CYAN}->{C.RESET}  {l}")
         sep()
-        cprint(f"  [✓] {len(links)} link(s) encontrado(s).", C.GREEN)
+        cprint(f"  [OK] {len(links)} link(s) encontrado(s).", C.GREEN)
     except Exception as e:
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 14 - GERADOR DE HASH
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def hash_generator():
     banner()
-    cprint("  ══ GERADOR DE HASH ══\n", C.PURPLE + C.BOLD)
+    cprint("  == GERADOR DE HASH ==\n", C.PURPLE + C.BOLD)
     text = input(f"  {C.CYAN}Texto ou caminho de arquivo{C.RESET}: ").strip()
     if os.path.isfile(text):
         with open(text, "rb") as f:
@@ -613,12 +607,12 @@ def hash_generator():
         cprint(f"  {C.YELLOW}{algo.upper():<12}{C.RESET}  {h}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 15 - HASH CRACKER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def hash_cracker():
     banner()
-    cprint("  ══ HASH CRACKER (WORDLIST) ══\n", C.PURPLE + C.BOLD)
+    cprint("  == HASH CRACKER (WORDLIST) ==\n", C.PURPLE + C.BOLD)
     target = input(f"  {C.CYAN}Hash alvo{C.RESET}: ").strip().lower()
     algo   = input(f"  {C.CYAN}Algoritmo (md5/sha1/sha256){C.RESET}: ").strip().lower()
     wpath  = input(f"  {C.CYAN}Caminho da wordlist{C.RESET}: ").strip()
@@ -635,21 +629,21 @@ def hash_cracker():
                 except:
                     cprint(f"  [!] Algoritmo inválido: {algo}", C.RED); pause(); return
                 if h == target:
-                    cprint(f"\n  {C.GREEN}[✓] ENCONTRADO!{C.RESET}  {C.YELLOW}{word}{C.RESET}")
+                    cprint(f"\n  {C.GREEN}[OK] ENCONTRADO!{C.RESET}  {C.YELLOW}{word}{C.RESET}")
                     pause(); return
                 if i % 5000 == 0 and i > 0:
                     cprint(f"  [~] {i} tentativas...", C.GRAY)
-        cprint(f"\n  {C.RED}[✗] Hash não crackeado na wordlist.", C.RED)
+        cprint(f"\n  {C.RED}[X] Hash não crackeado na wordlist.", C.RED)
     except Exception as e:
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 16 - BASE64
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def base64_tool():
     banner()
-    cprint("  ══ ENCODER/DECODER BASE64 ══\n", C.PURPLE + C.BOLD)
+    cprint("  == ENCODER/DECODER BASE64 ==\n", C.PURPLE + C.BOLD)
     mode = input(f"  {C.CYAN}[1] Encode  [2] Decode{C.RESET}: ").strip()
     text = input(f"  {C.CYAN}Texto{C.RESET}: ").strip()
     sep()
@@ -664,12 +658,12 @@ def base64_tool():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 17 - ROT13
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def rot13_tool():
     banner()
-    cprint("  ══ ROT13 CIPHER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == ROT13 CIPHER ==\n", C.PURPLE + C.BOLD)
     text = input(f"  {C.CYAN}Texto{C.RESET}: ").strip()
     result = text.translate(str.maketrans(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
@@ -678,12 +672,12 @@ def rot13_tool():
     cprint(f"  {C.GREEN}ROT13:{C.RESET}  {result}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 18 - XOR CIPHER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def xor_cipher():
     banner()
-    cprint("  ══ XOR CIPHER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == XOR CIPHER ==\n", C.PURPLE + C.BOLD)
     text = input(f"  {C.CYAN}Texto{C.RESET}: ").strip()
     key  = input(f"  {C.CYAN}Chave (string){C.RESET}: ").strip()
     sep()
@@ -694,12 +688,12 @@ def xor_cipher():
     cprint(f"  {C.GREEN}Base64: {C.RESET}  {b64_out}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 19 - CAESAR CIPHER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def caesar_cipher():
     banner()
-    cprint("  ══ CAESAR CIPHER ══\n", C.PURPLE + C.BOLD)
+    cprint("  == CAESAR CIPHER ==\n", C.PURPLE + C.BOLD)
     text   = input(f"  {C.CYAN}Texto{C.RESET}: ").strip()
     shift  = input(f"  {C.CYAN}Shift (ex: 3){C.RESET}: ").strip()
     mode   = input(f"  {C.CYAN}[1] Encriptar  [2] Decriptar  [3] Brute Force{C.RESET}: ").strip()
@@ -727,12 +721,12 @@ def caesar_cipher():
             cprint(f"  {C.CYAN}[{i:2d}]{C.RESET}  {shift_text(text, i)}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 20 - GERADOR DE SENHAS
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def password_gen():
     banner()
-    cprint("  ══ GERADOR DE SENHAS FORTES ══\n", C.PURPLE + C.BOLD)
+    cprint("  == GERADOR DE SENHAS FORTES ==\n", C.PURPLE + C.BOLD)
     length  = input(f"  {C.CYAN}Tamanho (padrão 20){C.RESET}: ").strip()
     count   = input(f"  {C.CYAN}Quantidade (padrão 10){C.RESET}: ").strip()
     use_sym = input(f"  {C.CYAN}Incluir símbolos? [s/n]{C.RESET}: ").strip().lower()
@@ -747,12 +741,12 @@ def password_gen():
         cprint(f"  {C.YELLOW}[{i+1:2d}]{C.RESET}  {pwd}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 21 - GERADOR DE WORDLIST
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def wordlist_gen():
     banner()
-    cprint("  ══ GERADOR DE WORDLIST ══\n", C.PURPLE + C.BOLD)
+    cprint("  == GERADOR DE WORDLIST ==\n", C.PURPLE + C.BOLD)
     base   = input(f"  {C.CYAN}Palavra base{C.RESET}: ").strip()
     year   = input(f"  {C.CYAN}Ano (ex: 2024){C.RESET}: ").strip()
     extra  = input(f"  {C.CYAN}Extras separados por vírgula (ex: 123,!,@){C.RESET}: ").strip()
@@ -774,15 +768,15 @@ def wordlist_gen():
     with open(output, "w") as f:
         for w in sorted(words):
             f.write(w + "\n")
-    cprint(f"  {C.GREEN}[✓]{C.RESET} {len(words)} palavras salvas em {C.YELLOW}{output}{C.RESET}")
+    cprint(f"  {C.GREEN}[OK]{C.RESET} {len(words)} palavras salvas em {C.YELLOW}{output}{C.RESET}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 22 - VERIFICADOR DE FORÇA DE SENHA
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def password_strength():
     banner()
-    cprint("  ══ VERIFICADOR DE FORÇA DE SENHA ══\n", C.PURPLE + C.BOLD)
+    cprint("  == VERIFICADOR DE FORÇA DE SENHA ==\n", C.PURPLE + C.BOLD)
     pwd = getpass.getpass(f"  {C.CYAN}Senha (oculta){C.RESET}: ")
     sep()
     score = 0
@@ -798,7 +792,7 @@ def password_strength():
         (not re.search(r"(.)\1{2,}", pwd), "Sem repetições consecutivas"),
     ]
     for ok, desc in checks:
-        icon  = f"{C.GREEN}[✓]" if ok else f"{C.RED}[✗]"
+        icon  = f"{C.GREEN}[OK]" if ok else f"{C.RED}[X]"
         cprint(f"  {icon}{C.RESET}  {desc}")
         score += ok
     sep()
@@ -811,18 +805,18 @@ def password_strength():
     cprint(f"  Força: {level[0]}{C.BOLD}{level[1]}{C.RESET}  ({score}/{len(checks)})")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 23 - MUTAÇÃO LEET SPEAK
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def leet_mutator():
     banner()
-    cprint("  ══ MUTAÇÃO LEET SPEAK ══\n", C.PURPLE + C.BOLD)
+    cprint("  == MUTAÇÃO LEET SPEAK ==\n", C.PURPLE + C.BOLD)
     word = input(f"  {C.CYAN}Palavra{C.RESET}: ").strip()
     sep()
     maps = [
         {"a":"4","e":"3","i":"1","o":"0","s":"5","t":"7"},
         {"a":"@","e":"3","i":"!","o":"0","s":"$","t":"+"},
-        {"a":"4","e":"€","i":"|","o":"()","s":"§","t":"†"},
+        {"a":"4","e":"","i":"|","o":"()","s":"","t":""},
     ]
     for i, m in enumerate(maps, 1):
         result = word
@@ -831,12 +825,12 @@ def leet_mutator():
         cprint(f"  {C.YELLOW}[Estilo {i}]{C.RESET}  {result}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 24 - INFO DO SISTEMA
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def sys_info():
     banner()
-    cprint("  ══ INFO DO SISTEMA LOCAL ══\n", C.PURPLE + C.BOLD)
+    cprint("  == INFO DO SISTEMA LOCAL ==\n", C.PURPLE + C.BOLD)
     sep()
     try: hostname = socket.gethostname()
     except: hostname = "N/A"
@@ -875,12 +869,12 @@ def sys_info():
         pass
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 25 - IP PÚBLICO
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def public_ip():
     banner()
-    cprint("  ══ CAPTURADOR DE IP PÚBLICO ══\n", C.PURPLE + C.BOLD)
+    cprint("  == CAPTURADOR DE IP PÚBLICO ==\n", C.PURPLE + C.BOLD)
     sep()
     services = [
         "https://api.ipify.org",
@@ -901,12 +895,12 @@ def public_ip():
     cprint("  [!] Não foi possível obter o IP público.", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 26 - MAC ADDRESS LOOKUP
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def mac_lookup():
     banner()
-    cprint("  ══ MAC ADDRESS LOOKUP ══\n", C.PURPLE + C.BOLD)
+    cprint("  == MAC ADDRESS LOOKUP ==\n", C.PURPLE + C.BOLD)
     mac = input(f"  {C.CYAN}MAC Address (ex: 00:1A:2B:3C:4D:5E){C.RESET}: ").strip()
     oui = mac.replace("-",":").upper()[:8]
     sep()
@@ -923,12 +917,12 @@ def mac_lookup():
         cprint(f"  {C.YELLOW}Fabricante:{C.RESET}  Não encontrado (API indisponível)")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 27 - ANALISADOR DE ARQUIVO
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def file_analyzer():
     banner()
-    cprint("  ══ ANALISADOR DE ARQUIVO (HEX/STRINGS) ══\n", C.PURPLE + C.BOLD)
+    cprint("  == ANALISADOR DE ARQUIVO (HEX/STRINGS) ==\n", C.PURPLE + C.BOLD)
     path = input(f"  {C.CYAN}Caminho do arquivo{C.RESET}: ").strip()
     if not os.path.exists(path):
         cprint("  [!] Arquivo não encontrado.", C.RED); pause(); return
@@ -954,15 +948,15 @@ def file_analyzer():
         content = f.read()
     strings = re.findall(b"[ -~]{6,}", content)
     for s in strings[:40]:
-        cprint(f"  {C.GRAY}»{C.RESET} {s.decode(errors='ignore')}")
+        cprint(f"  {C.GRAY}>{C.RESET} {s.decode(errors='ignore')}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 28 - CONEXÕES ATIVAS
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def active_connections():
     banner()
-    cprint("  ══ LOG DE CONEXÕES ATIVAS ══\n", C.PURPLE + C.BOLD)
+    cprint("  == LOG DE CONEXÕES ATIVAS ==\n", C.PURPLE + C.BOLD)
     sep()
     cmd = "netstat -tunap" if platform.system().lower() != "windows" else "netstat -ano"
     try:
@@ -979,12 +973,12 @@ def active_connections():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 29 - GERADOR DE PAYLOAD BASE64
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def payload_b64():
     banner()
-    cprint("  ══ GERADOR DE PAYLOAD BASE64 ══\n", C.PURPLE + C.BOLD)
+    cprint("  == GERADOR DE PAYLOAD BASE64 ==\n", C.PURPLE + C.BOLD)
     cprint("  [Uso educacional / CTF / pentest autorizado]\n", C.GRAY)
     cmd = input(f"  {C.CYAN}Comando a encodar (ex: id){C.RESET}: ").strip()
     lang = input(f"  {C.CYAN}Linguagem [1=bash 2=python 3=php]{C.RESET}: ").strip()
@@ -1002,12 +996,12 @@ def payload_b64():
     cprint(f"  {C.YELLOW}Payload:{C.RESET}\n  {payload}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 30 - IP GEOLOCATION
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def ip_geolocation():
     banner()
-    cprint("  ══ IP GEOLOCATION ══\n", C.PURPLE + C.BOLD)
+    cprint("  == IP GEOLOCATION ==\n", C.PURPLE + C.BOLD)
     ip = input(f"  {C.CYAN}IP (ou ENTER para seu IP){C.RESET}: ").strip() or ""
     url = f"http://ip-api.com/json/{ip}?fields=status,message,country,regionName,city,isp,org,lat,lon,timezone,query"
     sep()
@@ -1025,12 +1019,12 @@ def ip_geolocation():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 31 - PING FLOOD TESTER
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def ping_flood():
     banner()
-    cprint("  ══ PING FLOOD TESTER (LOCAL/CTF) ══\n", C.PURPLE + C.BOLD)
+    cprint("  == PING FLOOD TESTER (LOCAL/CTF) ==\n", C.PURPLE + C.BOLD)
     cprint("  [!] Use apenas em redes próprias ou com autorização escrita.", C.RED)
     confirm = input(f"  {C.CYAN}Confirmar uso responsável? [sim/nao]{C.RESET}: ").strip().lower()
     if confirm != "sim":
@@ -1051,12 +1045,12 @@ def ping_flood():
         cprint(f"  [!] Erro: {e}", C.RED)
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 32 - REVERSE SHELL GENERATOR
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def rev_shell_gen():
     banner()
-    cprint("  ══ REVERSE SHELL GENERATOR ══\n", C.PURPLE + C.BOLD)
+    cprint("  == REVERSE SHELL GENERATOR ==\n", C.PURPLE + C.BOLD)
     cprint("  [Uso: CTF / pentest com autorização]\n", C.GRAY)
     ip   = input(f"  {C.CYAN}Seu IP (listener){C.RESET}: ").strip()
     port = input(f"  {C.CYAN}Porta{C.RESET}: ").strip()
@@ -1076,12 +1070,12 @@ def rev_shell_gen():
     cprint(f"\n  {C.CYAN}Listener:{C.RESET}  nc -lvnp {port}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 33 - ENCODER DE URL
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def url_encoder():
     banner()
-    cprint("  ══ ENCODER DE URL ══\n", C.PURPLE + C.BOLD)
+    cprint("  == ENCODER DE URL ==\n", C.PURPLE + C.BOLD)
     mode = input(f"  {C.CYAN}[1] Encode  [2] Decode{C.RESET}: ").strip()
     text = input(f"  {C.CYAN}Texto{C.RESET}: ").strip()
     sep()
@@ -1092,12 +1086,12 @@ def url_encoder():
         cprint(f"  {C.GREEN}Decoded:{C.RESET}\n  {urllib.parse.unquote(text)}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # 34 - DECODER JWT
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def jwt_decoder():
     banner()
-    cprint("  ══ DECODER JWT ══\n", C.PURPLE + C.BOLD)
+    cprint("  == DECODER JWT ==\n", C.PURPLE + C.BOLD)
     token = input(f"  {C.CYAN}Token JWT{C.RESET}: ").strip()
     sep()
     parts = token.split(".")
@@ -1135,9 +1129,9 @@ def jwt_decoder():
     cprint(f"\n  {C.RED}[!] Assinatura NÃO verificada (apenas decodificação){C.RESET}")
     pause()
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # DISPATCH TABLE
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 ACTIONS = {
     "1":  port_scanner,
     "2":  ping_sweep,
@@ -1176,9 +1170,9 @@ ACTIONS = {
     "35": None,  # EXIT
 }
 
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 # MAIN LOOP
-# ──────────────────────────────────────────────
+# ----------------------------------------------
 def main():
     if platform.system().lower() != "windows":
         try:
@@ -1191,7 +1185,7 @@ def main():
             choice = menu()
             if choice == "35":
                 clr()
-                cprint(f"\n  {C.PURPLE}█{C.RESET} JOTARPS encerrado. Stay safe. {C.PURPLE}█{C.RESET}\n", C.WHITE)
+                cprint(f"\n  {C.PURPLE}{C.RESET} JOTARPS encerrado. Stay safe. {C.PURPLE}{C.RESET}\n", C.WHITE)
                 sys.exit(0)
             action = ACTIONS.get(choice)
             if action:
